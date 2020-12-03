@@ -2,12 +2,14 @@
 
 using namespace std;
 
-class Sendero{
+class Sendero{ //Clase Senedero
 
 	private:
 		string nombre_, descripcion_, dificultad_, disponibilidad_;
 
 	public:
+		Sendero(string nombre, string descripcion, string dificultad, string disponibilidad);
+
 		inline void setNombre(string nombre) {nombre_=nombre;}
 		inline string getNombre() {return nombre_;}
 

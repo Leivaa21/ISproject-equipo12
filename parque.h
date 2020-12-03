@@ -2,14 +2,15 @@
 
 using namespace std;
 
-class Parque{
+class Parque{ //Clase Parque
 
 	private:
 		string nombre_, ubicacion_, provincia_, municipio_, fechaDeclaracion_, reconocimiento_;
 		int superficie_;
 
 	public:
-		Parque();
+		Parque(string nombre, string ubicacion, string provincia, string municipio, string fecha, string reconocimiento);
+
 		inline void setNombre(string nombre) {nombre_=nombre;}
 		inline string getNombre() {return nombre_;}
 
