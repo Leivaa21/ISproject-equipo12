@@ -21,36 +21,37 @@ Ruta::Ruta(int codigo, int longitud, string transporte, float duracion, string p
 bool Ruta::addParticipante(Visitante v){
 
 	list<Visitante>::iterator it; //Creamos iterador
-
-	//Comprobamos si el participante se encuentra ya en la ruta
-	for(it=participantes_.begin(); it!=participantes_.end(); ++it){
-		if((*it).getDni() == v.getDni()){
-			cout<<"Error: el visitante ya se encuentra inscrito en la ruta.\n";
-			return false;
+	//Comprobamos que no se ha llegado al limite de participantes
+	if(getMaxParticipantes() > participantes_.size()){ 
+	
+		//Comprobamos si el participante se encuentra ya en la ruta
+		for(it=participantes_.begin(); it!=participantes_.end(); ++it){
+			if((*it).getDni() == v.getDni()){
+				cout<<"Error: el visitante ya se encuentra inscrito en la ruta.\n";
+				return false;
+			}
 		}
+		participantes_.push_back(v); //Añadimos al visitante
+		return true;
 	}
-
-	participantes_.pushback(v); //Añadimos al visitante
-	return true;
+	else {
+		cout<<"Error: No fue posible añadir un nuevo participante (Limite de participantes alcanzado)\n";
+		return false;
+	}
 }
 
 bool Ruta::removeParticipante(Visitante v){
 
-	int encontrado=0;
 	list<Visitante>::iterator it;
 
 	//Comprobamos si el participante se encuentra en la ruta
 	for(it=participantes_.begin(); it!=participantes_.end(); ++it){
 		if((*it).getDni() == v.getDni()){
-			encontrado = 1;
 			it = participantes_.erase(it); //Borramos participante
+			return true; //Retornamos true ya que se pudo encontrar y borrar el participante.
 		}
 	}
-
-	if(encontrado==0)
-		return false;
-	else
-		return true;
+	return false; // Retornanos false ya que se recorrió la lista y no se encontro el participante
 }
 
 void Ruta::abreRuta(){

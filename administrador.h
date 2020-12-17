@@ -7,6 +7,7 @@
 #define __ADMINISTRADOR__
 
 #include "persona.h"
+#include "reserva.h"
 /**
  * La clase Administrador da forma al rol de Administrador, la persona  con 
  * dicho rol debe de poder gestionar la aplicación y los datos de la misma.
@@ -60,6 +61,11 @@ class Administrador : public Persona {
          */
         inline void setPassword(string password){password_=password;}
         inline string getPassword()const{return password_;}
+
+
+        bool addReserva(string id, Visitante visitante, Ruta ruta);
+        void removeReserva(Reserva reserva);
+        void removeReserva(string id);
 };
 
 #endif
