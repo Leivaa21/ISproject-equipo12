@@ -3,7 +3,8 @@
 
 #include "reserva.h"
 
-Reserva::Reserva(Visitante v, Ruta r){
+Reserva::Reserva(string id, Visitante v, Ruta r){
+	setID(id);
 	setVisitante(v);
 	setRuta(r);
 }

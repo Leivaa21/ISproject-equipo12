@@ -15,7 +15,7 @@ class Reserva{
 		Ruta ruta_;
 
 	public:
-		Reserva(Visitante v, Ruta r);
+		Reserva(string id, Visitante v, Ruta r);
 		inline void setID(string id){id_=id;}
 		inline string getID()const {return id_;}
 		inline void setVisitante(Visitante visitante){visitante_ = visitante;}

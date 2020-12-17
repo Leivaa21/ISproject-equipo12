@@ -8,7 +8,7 @@ Administrador::Administrador(string correo, string password, string nombre, stri
 bool addReserva(string id, Visitante visitante, Ruta ruta){
 
     if(ruta.addParticipante(visitante)){
-        Reserva x(visitante, ruta);
+        Reserva x(id, visitante, ruta);
         globalReservas.push_back(x);
         return true;
     }
