@@ -14,6 +14,7 @@ Sendero::Sendero(string nombre, string descripcion, string dificultad, string di
 bool Sendero::addIncidencia(int id, string descripcion, Ruta ruta){
 	Incidencia x(id, descripcion, ruta);
 	incidencias_.push_back(x);
+	return true;
 }
 
 bool Sendero::removeIncidencia(int id){
