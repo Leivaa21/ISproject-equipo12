@@ -99,6 +99,55 @@ class Monitor : public Persona{
          */
         inline void setPassword(string password){password_=password;}
         inline string getPassword()const{return password_;}
+        
+         /**
+         * La siguiente funcion recibe los parámetros propios de la clase ‘Incidencia‘ y añade un objeto a
+         * la lista de incidencias de un sendero.
+         * 
+         * @function notificarIncidencia() 
+         * @param <int> id
+         * @param <string> descripcion
+         * @param <Ruta> ruta
+         * Recibe los parametros de la incidencia y añade un objeto a la lista de incidencias del sendero
+         */
+        void notificarIncidencia(int id, string descripcion, Ruta ruta);
+
+        /**
+         * La siguiente funcion recibe los parámetros propios de la clase ‘Ruta’ y añade un objeto a la lista
+         * de rutas de un parque
+         *
+         * @function añadirRuta() 
+         * @param <int> codigo
+         * @param <int> longitud
+         * @param <string> transporte
+         * @param <float> duracion
+         * @param <string> publico
+         * @param <int> maxPart
+         * @param <string> fechaHora
+         * @param <Sendero> sendero
+         *
+         * Añade un objeto a la lista de rutas del parque
+         */
+        void añadirRuta(int codigo, int longitud, string transporte, float duracion, string publico, int maxPart, string fechaHora, Sendero sendero);
+
+        /**
+         * La siguiente funcion recibe el identificador de una ruta (Su variable codigo_) y elimina ese objeto de la lista de rutas de ese parque
+         * @function eliminarRuta() 
+         * @param <int> codigo
+         * @param <Parque> parque 
+         * Recibe el codigo de la ruta y la elimina de la lista
+        */
+        void eliminarRuta(int codigo, Parque parque);
+
+        /**
+         * La siguiente funcion recibe el identificador de una ruta (Su variable codigo_) y retorna una lista con
+         * todos los participantes (Su variable participantes_)
+         * @function verParticipantes() 
+         * @param <int> codigo
+         * @param <Parque> parque
+         * Recibe el codigo de la ruta y devuelve la lista de sus participantes
+        */
+        list<Visitante> verParticipantes(int codigo, Parque parque);
 };
 
 #endif
