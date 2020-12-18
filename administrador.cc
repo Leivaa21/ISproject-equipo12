@@ -83,10 +83,11 @@ Incidencia Administrador::getIncidencia(Sendero sendero, int id){
     cout<<"No se pudo encontrar ninguna incidencia con el id introducido.\n";
 }
 
-void Administrador::modificarEstadoSendero(string sendero){
+bool Administrador::modificarEstadoSendero(string sendero, string disponibilidad){
     for(auto i=globalSenderos.begin(); i!=globalSenderos.end(); i++){
         if(i->getNombre()==sendero){
-            cout<<"Introduzca la disponibilidad\n "; //No acabado
+            if(i->setDisponibilidad(disponibilidad))return true;
         }
     }
+    return false;
 }

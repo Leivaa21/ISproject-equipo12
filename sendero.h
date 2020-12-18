@@ -28,7 +28,7 @@ class Sendero{ //Clase Sendero
 		inline void setDificultad(string dificultad) {dificultad_=dificultad;}
 		inline string getDificultad() {return dificultad_;}
 
-		inline void setDisponibilidad(string disponibilidad) {disponibilidad_=disponibilidad;}
+		bool setDisponibilidad(string disponibilidad);
 		inline string getDisponibilidad() {return disponibilidad_;}
 
 		inline void setParque(Parque parque) {parque_=parque;}

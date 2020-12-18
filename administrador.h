@@ -76,7 +76,7 @@ class Administrador : public Persona {
 
         Incidencia getIncidencia(Sendero sendero, int id);
 
-        void modificarEstadoSendero(string sendero);
+        bool modificarEstadoSendero(string sendero, string disponibilidad);
 
         };
 
