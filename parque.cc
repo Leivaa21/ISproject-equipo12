@@ -19,6 +19,7 @@ bool Parque::addSendero()
 	list<Sendero>::iterator i;
 
 	string nombre, descripcion, dificultad, disponibilidad;
+	Parque parque;
 
 	cout << "Introduce el nombre del sendero: ";
 	cin >> nombre;
@@ -31,6 +32,9 @@ bool Parque::addSendero()
 
 	cout << "\nIntroduce su disponibilidad: ";
 	cin >> disponibilidad;
+	
+	cout<< "\nIntroduce el parque al que pertenece: ";
+	cin >> parque;
 
 	for(i=senderos_.begin(); i!=senderos_.end(); i++)
 	{
@@ -43,7 +47,7 @@ bool Parque::addSendero()
 
 	senderos_.push_back(Sendero(nombre, descripcion, dificultad, disponibilidad));
 
-	cout << "Sendero añadido con exito\n";
+	cout << "Sendero aÃ±adido con exito\n";
 
 	return true;
 
@@ -127,7 +131,7 @@ bool Parque::addRuta()
 
 	rutas_.push_back(Ruta(codigo, longitud, transporte, duracion, publico, maxParticipantes, fechaHora));
 
-	cout << "Ruta añadida con exito\n";
+	cout << "Ruta aÃ±adida con exito\n";
 
 	return true;
 
