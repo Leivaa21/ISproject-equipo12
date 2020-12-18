@@ -141,12 +141,10 @@ bool Parque::addRuta()
 
 }
 
-bool Parque::removeRuta()
+bool Parque::removeRuta(int codigo)
 {
 	list<Ruta>::iterator i;
 	list<Ruta> aux;
-
-	string codigo;
 
 	if(rutas_.size()==0)
 	{
@@ -154,9 +152,6 @@ bool Parque::removeRuta()
 		return false;
 	}
 
-	cout << "Introduce el codigo de la ruta que desea eliminar: ";
-	cin >> codigo;
-	cout << "\n";
 
 	for(i=rutas_.begin(); i!=rutas_.end(); i++)
 	{
