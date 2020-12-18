@@ -7,6 +7,8 @@
 
 using namespace std;
 
+list<Parque> globalParques;
+
 class Parque{ //Clase Parque
 
 	private:

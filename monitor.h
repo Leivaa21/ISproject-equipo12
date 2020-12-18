@@ -6,7 +6,11 @@
 #ifndef __MONITOR__
 #define __MONITOR__
 
+#include <list>
 #include "persona.h"
+
+
+std::list<Monitor> globalMonitores;
 
 
 /**

@@ -8,6 +8,8 @@
 
 #include "persona.h"
 #include "reserva.h"
+#include "monitor.h"
+#include "incidencia.h"
 /**
  * La clase Administrador da forma al rol de Administrador, la persona  con 
  * dicho rol debe de poder gestionar la aplicación y los datos de la misma.
@@ -64,8 +66,18 @@ class Administrador : public Persona {
 
 
         bool addReserva(string id, Visitante visitante, Ruta ruta);
-        void removeReserva(Reserva reserva);
-        void removeReserva(string id);
-};
+        bool removeReserva(Reserva reserva);
+        bool removeReserva(string id);
+        
+        void addParque(string nombre, int superficie, string ubicacion, string provincia, string municipio, string fecha, string reconocimiento);
+        void addMonitor(string correo, string password, string nombre, string apellido1, string apellido2, string dni, string fecha, int telefono, string direccion);
+        
+        list<Visitante> getParticipantes(int codigo);
+
+        Incidencia getIncidencia(Sendero sendero, int id);
+
+        void modificarEstadoSendero(string sendero);
+
+        };
 
 #endif

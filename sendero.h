@@ -7,7 +7,9 @@
 
 using namespace std;
 
-class Sendero{ //Clase Senedero
+list<Sendero> globalSenderos;
+
+class Sendero{ //Clase Sendero
 
 	private:
 		string nombre_, descripcion_, dificultad_, disponibilidad_;
@@ -15,7 +17,7 @@ class Sendero{ //Clase Senedero
 		Parque parque_;
 
 	public:
-		Sendero(string nombre, string descripcion, string dificultad, string disponibilidad);
+		Sendero(string nombre, string descripcion, string dificultad, string disponibilidad, Parque parque);
 
 		inline void setNombre(string nombre) {nombre_=nombre;}
 		inline string getNombre() {return nombre_;}
@@ -29,12 +31,13 @@ class Sendero{ //Clase Senedero
 		inline void setDisponibilidad(string disponibilidad) {disponibilidad_=disponibilidad;}
 		inline string getDisponibilidad() {return disponibilidad_;}
 
-		bool addIncidencia();
-		bool removeIncidencia();
-		inline list<Incidencia> getIncidencias() {return incidencias_;}
+		inline void setParque(Parque parque) {parque_=parque;}
+		inline Parque getParque() {return parque_;}
+		
+		bool addIncidencia(int id, string descripcion, Ruta ruta);
+		bool removeIncidencia(int id);
 
-		void setParque();
-		Parque getParque() {return parque_;}
+		inline list<Incidencia> getIncidencias() {return incidencias_;}
 };
 
 #endif

@@ -8,6 +8,9 @@
 #include "visitante.h"
 #include "sendero.h"
 
+list<Ruta> globalRutas;
+
+
 class Ruta{
 	private:
 		int codigo_,longitud_,maxParticipantes_;

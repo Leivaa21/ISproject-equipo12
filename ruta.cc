@@ -15,6 +15,8 @@ Ruta::Ruta(int codigo, int longitud, string transporte, float duracion, string p
 	setFH(fechaHora);
 	setSendero(sendero);
 	aforoCompleto_ = false; //La ruta empieza sin participantes al crearla
+
+	globalRutas.push_back(this);
 }
 
 

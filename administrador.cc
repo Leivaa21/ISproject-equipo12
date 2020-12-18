@@ -5,7 +5,7 @@ Administrador::Administrador(string correo, string password, string nombre, stri
     setPassword(password);
 }
 
-bool addReserva(string id, Visitante visitante, Ruta ruta){
+bool Administrador::addReserva(string id, Visitante visitante, Ruta ruta){
 
     if(ruta.addParticipante(visitante)){
         Reserva x(id, visitante, ruta);
@@ -16,7 +16,7 @@ bool addReserva(string id, Visitante visitante, Ruta ruta){
 
 };
 
-bool removeReserva(Reserva reserva){
+bool Administrador::removeReserva(Reserva reserva){
 
     for(auto i=globalReservas.begin(); i!=globalReservas.end(); i++){
         if(reserva.getID()==i->getID()){
@@ -34,7 +34,7 @@ bool removeReserva(Reserva reserva){
 }
 
 
-bool removeReserva(string id){
+bool Administrador::removeReserva(string id){
 
     for(auto i=globalReservas.begin(); i!=globalReservas.end(); i++){
         if(id==i->getID()){
@@ -50,4 +50,43 @@ bool removeReserva(string id){
     cout<<"ERROR: No se pudo eliminar la reserva (Reserva no encontrada!)\n";
     return false;
 
+}
+
+void Administrador::addParque(string nombre, int superficie, string ubicacion, string provincia, string municipio, string fecha, string reconocimiento){
+    Parque x(nombre, superficie, ubicacion, provincia, municipio, fecha, reconocimiento);
+    globalReservas.push_back(x);
+}
+
+void Administrador::addMonitor(string correo, string password, string nombre, string apellido1, string apellido2, string dni, string fecha, int telefono, string direccion){
+    Monitor x(correo,password,nombre,apellido1,apellido2,dni,fecha,telefono,direccion);
+    globalMonitores.push_back(x);
+}
+
+list<Visitante> Administrador::getParticipantes(int codigo){
+    for(auto i=globalRutas.begin(); i!=globalRutas.end(); i++){
+        if(i->getCodigo()==codigo){
+            return i->getParticipantes;
+        }
+    }
+    cout<<"No se pudo encontrar ninguna ruta con el codigo introducido.\n";
+}
+
+Incidencia Administrador::getIncidencia(Sendero sendero, int id){
+
+    list<Incidencia> incidencias=sendero.getIncidencias();
+
+    for(auto i=incidencias.begin(); i!=incidencias.end(); i++){
+        if(i->getID()==id){
+            return *i;
+        }
+    }
+    cout<<"No se pudo encontrar ninguna incidencia con el id introducido.\n";
+}
+
+void Administrador::modificarEstadoSendero(string sendero){
+    for(auto i=globalSenderos.begin(); i!=globalSenderos.end(); i++){
+        if(i->getNombre()==sendero){
+            cout<<"Introduzca la disponibilidad\n "; //No acabado
+        }
+    }
 }
