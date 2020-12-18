@@ -14,61 +14,37 @@ Parque::Parque(string nombre, int superficie, string ubicacion, string provincia
 	setReconocimiento(reconocimiento);
 }
 
-bool Parque::addSendero()
+bool Parque::addSendero(Sendero sendero)
 {
 	list<Sendero>::iterator i;
 
-	string nombre, descripcion, dificultad, disponibilidad;
-	Parque parque;
-
-	cout << "Introduce el nombre del sendero: ";
-	cin >> nombre;
-
-	cout << "\nIntroduce su descripcion: ";
-	cin >> descripcion;
-
-	cout << "\nIntroduce su dificultad: ";
-	cin >> dificultad;
-
-	cout << "\nIntroduce su disponibilidad: ";
-	cin >> disponibilidad;
-	
-	cout<< "\nIntroduce el parque al que pertenece: ";
-	cin >> parque;
-
 	for(i=senderos_.begin(); i!=senderos_.end(); i++)
 	{
-		if((*i).getNombre()==nombre)
+		if((*i).getNombre()==sendero.getNombre())
 		{
 			cout << "ERROR: El sendero ya esta resgistrado\n";
 			return false;
 		}
 	}
 
-	senderos_.push_back(Sendero(nombre, descripcion, dificultad, disponibilidad, parque));
+	senderos_.push_back(sendero);
 
-	cout << "Sendero aÃ±adido con exito\n";
+	cout << "Sendero añadido con exito\n";
 
 	return true;
 
 }
 
-bool Parque::removeSendero()
+bool Parque::removeSendero(string nombre)
 {
 	list<Sendero>::iterator i;
 	list<Sendero> aux;
-
-	string nombre;
 
 	if(senderos_.size()==0)
 	{
 		cout << "ERROR: La lista esta vacia";
 		return false;
 	}
-
-	cout << "Introduce el nombre del sendero que desea eliminar: ";
-	cin >> nombre;
-	cout << "\n";
 
 	for(i=senderos_.begin(); i!=senderos_.end(); i++)
 	{
@@ -91,51 +67,22 @@ bool Parque::removeSendero()
 
 }
 
-bool Parque::addRuta()
+bool Parque::addRuta(Ruta ruta)
 {
 	list<Ruta>::iterator i;
 
-	int codigo, longitud, maxParticipantes;
-	string transporte, publico, fechaHora;
-	float duracion;
-	Sendero sendero;
-
-	cout << "Introduce el codigo de la ruta: ";
-	cin >> codigo;
-
-	cout << "\nIntroduce su longitud: ";
-	cin >> longitud;
-
-	cout << "\nIntroduce el numero maximo de participantes: ";
-	cin >> maxParticipantes;
-
-	cout << "\nIntroduce el transporte en el que se realiza: ";
-	cin >> transporte;
-
-	cout << "\nIntroduce a que publico esta destinada:";
-	cin >> publico;
-
-	cout << "\nIntroduce la fecha y hora a la que se realizara: ";
-	cin >> fechaHora;
-
-	cout << "\nIntroduce su duracion:";
-	cin >> duracion;
-	
-	cout << "\nIntroduce el sendero al que pertenece: ";
-	cin >> sendero;
-
 	for(i=rutas_.begin(); i!=rutas_.end(); i++)
 	{
-		if((*i).getCodigo()==codigo)
+		if((*i).getCodigo()==ruta.getCodigo())
 		{
 			cout << "ERROR: La ruta ya esta resgistrada\n";
 			return false;
 		}
 	}
 
-	rutas_.push_back(Ruta(codigo, longitud, transporte, duracion, publico, maxParticipantes, fechaHora, sendero));
+	rutas_.push_back(ruta);
 
-	cout << "Ruta aÃ±adida con exito\n";
+	cout << "Ruta añadida con exito\n";
 
 	return true;
 
@@ -151,7 +98,6 @@ bool Parque::removeRuta(int codigo)
 		cout << "ERROR: La lista esta vacia";
 		return false;
 	}
-
 
 	for(i=rutas_.begin(); i!=rutas_.end(); i++)
 	{

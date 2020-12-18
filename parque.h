@@ -7,8 +7,6 @@
 
 using namespace std;
 
-list<Parque> globalParques;
-
 class Parque{ //Clase Parque
 
 	private:
@@ -42,12 +40,12 @@ class Parque{ //Clase Parque
 		inline void setReconocimiento(string reconocimiento) {reconocimiento_=reconocimiento;}
 		inline string getReconocimiento() {return reconocimiento_;}
 
-		bool addSendero();
-		bool removeSendero();
+		bool addSendero(Sendero sendero);
+		bool removeSendero(string nombre);
 		inline list<Sendero> getSenderos() {return senderos_;}
 
-		bool addRuta();
-		bool removeRuta();
+		bool addRuta(Ruta ruta);
+		bool removeRuta(int codigo);
 		inline list<Ruta> getRutas() {return rutas_;}
 };
 
