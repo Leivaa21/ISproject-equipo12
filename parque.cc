@@ -45,7 +45,7 @@ bool Parque::addSendero()
 		}
 	}
 
-	senderos_.push_back(Sendero(nombre, descripcion, dificultad, disponibilidad));
+	senderos_.push_back(Sendero(nombre, descripcion, dificultad, disponibilidad, parque));
 
 	cout << "Sendero añadido con exito\n";
 
@@ -98,6 +98,7 @@ bool Parque::addRuta()
 	int codigo, longitud, maxParticipantes;
 	string transporte, publico, fechaHora;
 	float duracion;
+	Sendero sendero;
 
 	cout << "Introduce el codigo de la ruta: ";
 	cin >> codigo;
@@ -119,6 +120,9 @@ bool Parque::addRuta()
 
 	cout << "\nIntroduce su duracion:";
 	cin >> duracion;
+	
+	cout << "\nIntroduce el sendero al que pertenece: ";
+	cin >> sendero;
 
 	for(i=rutas_.begin(); i!=rutas_.end(); i++)
 	{
@@ -129,7 +133,7 @@ bool Parque::addRuta()
 		}
 	}
 
-	rutas_.push_back(Ruta(codigo, longitud, transporte, duracion, publico, maxParticipantes, fechaHora));
+	rutas_.push_back(Ruta(codigo, longitud, transporte, duracion, publico, maxParticipantes, fechaHora, sendero));
 
 	cout << "Ruta añadida con exito\n";
 
