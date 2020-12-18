@@ -8,6 +8,9 @@
 
 #include <list>
 #include "persona.h"
+#include "sendero.h"
+#include "parque.h"
+#include "ruta.h"
 
 
 std::list<Monitor> globalMonitores;
