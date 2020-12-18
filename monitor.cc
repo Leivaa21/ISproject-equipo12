@@ -25,7 +25,9 @@ void Monitor::añadirRuta(int codigo, int longitud, string transporte, float dur
 	//Obtenemos el parque para añadir la ruta
 	Parque parque = sendero.getParque();
 
-	parque.addRuta(codigo,longitud,transporte,duracion,publico,maxPart,fechaHora,sendero);
+
+	Ruta x(codigo,longitud,transporte,duracion,publico,maxPart,fechaHora,sendero);
+	parque.addRuta(x);
 
 }
 
@@ -43,7 +45,7 @@ list<Visitante> Monitor::verParticipantes(int codigo, Parque parque){
 	list<Ruta>::iterator it;
 
 	for(it=rutas.begin(); it!=rutas.end(); ++it){
-		if((*it).getCodigo == codigo){
+		if((*it).getCodigo() == codigo){
 			return (*it).getParticipantes();
 		}
 	}
