@@ -12,6 +12,8 @@ Parque::Parque(string nombre, int superficie, string ubicacion, string provincia
 	setMunicipio(municipio);
 	setFecha(fecha);
 	setReconocimiento(reconocimiento);
+
+	globalParques.push_back(this);
 }
 
 bool Parque::addSendero(Sendero sendero)
@@ -29,7 +31,7 @@ bool Parque::addSendero(Sendero sendero)
 
 	senderos_.push_back(sendero);
 
-	cout << "Sendero añadido con exito\n";
+	cout << "Sendero aï¿½adido con exito\n";
 
 	return true;
 
@@ -82,7 +84,7 @@ bool Parque::addRuta(Ruta ruta)
 
 	rutas_.push_back(ruta);
 
-	cout << "Ruta añadida con exito\n";
+	cout << "Ruta aï¿½adida con exito\n";
 
 	return true;
 

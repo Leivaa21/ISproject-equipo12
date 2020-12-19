@@ -54,7 +54,7 @@ bool Administrador::removeReserva(string id){
 
 void Administrador::addParque(string nombre, int superficie, string ubicacion, string provincia, string municipio, string fecha, string reconocimiento){
     Parque x(nombre, superficie, ubicacion, provincia, municipio, fecha, reconocimiento);
-    globalReservas.push_back(x);
+    globalParques.push_back(x);
 }
 
 void Administrador::addMonitor(string correo, string password, string nombre, string apellido1, string apellido2, string dni, string fecha, int telefono, string direccion){

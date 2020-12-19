@@ -7,6 +7,8 @@
 
 using namespace std;
 
+list<Parque> globalParques;
+
 class Parque{ //Clase Parque
 
 	private:
@@ -17,36 +19,36 @@ class Parque{ //Clase Parque
 
 
 	public:
-		Parque(string nombre, int superficie, string ubicacion, string provincia, string municipio, string fecha, string reconocimiento);
+		Parque(string nombre="\0", int superficie=0, string ubicacion="\0", string provincia="\0", string municipio="\0", string fecha="\0", string reconocimiento="\0");
 
 		inline void setNombre(string nombre) {nombre_=nombre;}
-		inline string getNombre() {return nombre_;}
+		inline string getNombre() const {return nombre_;}
 
 		inline void setSuperficie(int superficie) {superficie_=superficie;}
-		inline int getSuperficie() {return superficie_;}
+		inline int getSuperficie() const {return superficie_;}
 
 		inline void setUbicacion(string ubicacion) {ubicacion_=ubicacion;}
-		inline string getUbicacion() {return ubicacion_; }
+		inline string getUbicacion() const {return ubicacion_; }
 
 		inline void setProvincia(string provincia) {provincia_=provincia;}
-		inline string getProvincia() {return provincia_;}
+		inline string getProvincia() const {return provincia_;}
 
 		inline void setMunicipio(string municipio) {municipio_=municipio;}
-		inline string getMunicipio() {return municipio_;}
+		inline string getMunicipio() const {return municipio_;}
 
 		inline void setFecha(string fecha) {fechaDeclaracion_=fecha;}
-		inline string getFecha() {return fechaDeclaracion_;}
+		inline string getFecha() const {return fechaDeclaracion_;}
 
 		inline void setReconocimiento(string reconocimiento) {reconocimiento_=reconocimiento;}
-		inline string getReconocimiento() {return reconocimiento_;}
+		inline string getReconocimiento() const {return reconocimiento_;}
 
 		bool addSendero(Sendero sendero);
 		bool removeSendero(string nombre);
-		inline list<Sendero> getSenderos() {return senderos_;}
+		inline list<Sendero> getSenderos() const {return senderos_;}
 
 		bool addRuta(Ruta ruta);
 		bool removeRuta(int codigo);
-		inline list<Ruta> getRutas() {return rutas_;}
+		inline list<Ruta> getRutas() const {return rutas_;}
 };
 
 #endif
