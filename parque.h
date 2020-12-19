@@ -1,12 +1,10 @@
-#ifndef PARQUE_H
-#define PARQUE_H
-#include <string>
-#include <list>
-#include "sendero.h"
+#ifndef __PARQUE__
+#define __PARQUE__
+
 #include "ruta.h"
+#include "sendero.h"
 
-using namespace std;
-
+class Parque;
 list<Parque> globalParques;
 
 class Parque{ //Clase Parque
@@ -42,11 +40,11 @@ class Parque{ //Clase Parque
 		inline void setReconocimiento(string reconocimiento) {reconocimiento_=reconocimiento;}
 		inline string getReconocimiento() const {return reconocimiento_;}
 
-		bool addSendero(Sendero sendero);
+		bool addSendero(Sendero *sendero);
 		bool removeSendero(string nombre);
 		inline list<Sendero> getSenderos() const {return senderos_;}
 
-		bool addRuta(Ruta ruta);
+		bool addRuta(Ruta *ruta);
 		bool removeRuta(int codigo);
 		inline list<Ruta> getRutas() const {return rutas_;}
 };

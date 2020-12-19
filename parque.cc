@@ -13,23 +13,23 @@ Parque::Parque(string nombre, int superficie, string ubicacion, string provincia
 	setFecha(fecha);
 	setReconocimiento(reconocimiento);
 
-	globalParques.push_back(this);
+	globalParques.push_back(*this);
 }
 
-bool Parque::addSendero(Sendero sendero)
+bool Parque::addSendero(Sendero *sendero)
 {
 	list<Sendero>::iterator i;
 
 	for(i=senderos_.begin(); i!=senderos_.end(); i++)
 	{
-		if((*i).getNombre()==sendero.getNombre())
+		if((*i).getNombre()==sendero->getNombre())
 		{
 			cout << "ERROR: El sendero ya esta resgistrado\n";
 			return false;
 		}
 	}
 
-	senderos_.push_back(sendero);
+	senderos_.push_back(*sendero);
 
 	cout << "Sendero a�adido con exito\n";
 
@@ -69,20 +69,20 @@ bool Parque::removeSendero(string nombre)
 
 }
 
-bool Parque::addRuta(Ruta ruta)
+bool Parque::addRuta(Ruta *ruta)
 {
 	list<Ruta>::iterator i;
 
 	for(i=rutas_.begin(); i!=rutas_.end(); i++)
 	{
-		if((*i).getCodigo()==ruta.getCodigo())
+		if((*i).getCodigo()==ruta->getCodigo())
 		{
 			cout << "ERROR: La ruta ya esta resgistrada\n";
 			return false;
 		}
 	}
 
-	rutas_.push_back(ruta);
+	rutas_.push_back(*ruta);
 
 	cout << "Ruta a�adida con exito\n";
 

@@ -14,7 +14,7 @@
 
 # Points to the root of Google Test, relative to where this file is.
 # Remember to tweak this if you move this file.
-GTEST_DIR = /mnt/c/Users/Lucen/OneDrive/Escritorio/POO/googletest
+GTEST_DIR = /home/leivaa/Escritorio/Uni/POO/googletest-release-1.10.0/googletest
 # Where to find user code.
 # USER_DIR = ../samples
 
@@ -75,22 +75,22 @@ persona.o : persona.h persona.cc
 
 visitante.o: visitante.h visitante.cc persona.h persona.cc
 
-administrador.o: administrador.h administrador.cc reserva.h reserva.cc monitor.h monitor.cc incidencia.h incidencia.cc persona.h persona.cc
+administrador.o: administrador.h administrador.cc persona.h persona.cc reserva.h reserva.cc visitante.h visitante.cc ruta.h ruta.cc sendero.h sendero.cc parque.h parque.cc monitor.h monitor.cc incidencia.h incidencia.cc
 
-monitor.o: monitor.h monitor.cc sendero.h sendero.cc parque.h parque.cc ruta.h ruta.cc persona.h persona.cc
+monitor.o: monitor.h monitor.cc persona.h persona.cc sendero.h sendero.cc incidencia.h incidencia.cc parque.h parque.cc ruta.h ruta.cc visitante.h visitante.cc
 
-parque.o: parque.h parque.cc sendero.h sendero.cc ruta.h ruta.cc
+parque.o: parque.h parque.cc sendero.h sendero.cc incidencia.h incidencia.cc ruta.h ruta.cc visitante.h visitante.cc persona.h persona.cc
 
-incidencia.o: incidencia.h incidencia.cc ruta.h ruta.cc
+incidencia.o: incidencia.h incidencia.cc ruta.h ruta.cc visitante.h visitante.cc persona.h persona.cc sendero.h sendero.cc parque.h parque.cc
 
-sendero.o: sendero.h sendero.cc incidencia.h incidencia.cc ruta.h ruta.cc parque.h parque.cc
+sendero.o: sendero.h sendero.cc incidencia.h incidencia.cc ruta.h ruta.cc visitante.h visitante.cc persona.h persona.cc parque.h parque.cc
 
-ruta.o: ruta.h ruta.cc visitante.h visitante.cc sendero.h sendero.cc
+ruta.o: ruta.h ruta.cc sendero.h sendero.cc incidencia.h incidencia.cc visitante.h visitante.cc persona.h persona.cc parque.h parque.cc
 
-reserva.o: reserva.h reserva.cc visitante.h visitante.cc ruta.h ruta.cc
+reserva.o: reserva.h reserva.cc ruta.h ruta.cc sendero.h sendero.cc incidencia.h incidencia.cc visitante.h visitante.cc persona.h persona.cc parque.h parque.cc
 
-ruta_unittest.o : ruta_unittest.cc ruta.h ruta.cc visitante.h visitante.cc persona.h persona.cc sendero.h sendero.cc parque.h parque.cc
+ruta_unittest.o : ruta_unittest.cc ruta.h ruta.cc sendero.h sendero.cc incidencia.h incidencia.cc visitante.h visitante.cc persona.h persona.cc parque.h parque.cc
 
-ruta_unittest : ruta.o persona.o sendero.o visitante.o parque.o ruta_unittest.o gtest_main.a
+ruta_unittest : ruta.o ruta_unittest.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
 

@@ -1,15 +1,14 @@
 //ruta.h
 //Ruta's prototype
 
-#ifndef __RUT__
-#define __RUT__
-#include <string>
-#include <list>
+#ifndef __RUTA__
+#define __RUTA__
 #include "visitante.h"
-#include "sendero.h"
+
+class Sendero;
+class Ruta;
 
 list<Ruta> globalRutas;
-
 
 class Ruta{
 	private:
@@ -18,10 +17,10 @@ class Ruta{
 		float duracion_;
 		list<Visitante> participantes_;
 		bool aforoCompleto_;
-		Sendero sendero_; //Sendero al que pertenece
+		list<Sendero>::iterator sendero_; //Sendero al que pertenece
 
 	public:
-		Ruta(int codigo, int longitud, string transporte, float duracion, string publico, int maxPart, string fechaHora, Sendero sendero);
+		Ruta(list<Sendero>::iterator sendero ,int codigo=0, int longitud=0, string transporte="\0", float duracion=0, string publico="\0", int maxPart=0, string fechaHora="\0");
 		inline void setCodigo(int codigo){codigo_ = codigo;}
 		inline int getCodigo() const {return codigo_;}
 		inline void setLongitud(int longitud){longitud_ = longitud;}
@@ -42,8 +41,8 @@ class Ruta{
 		void abreRuta();
 		void cierraRuta();
 		inline bool getCompleto() const {return aforoCompleto_;}
-		inline void setSendero(Sendero sendero){sendero_ = sendero;}
-		inline Sendero getSendero() const {return sendero_;}
+		inline void setSendero(list<Sendero>::iterator sendero){sendero_ = sendero;}
+		inline list<Sendero>::iterator getSendero() const {return sendero_;}
 
 };
 #endif

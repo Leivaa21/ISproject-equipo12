@@ -5,7 +5,7 @@
 #include "ruta.h"
 using namespace std;
 
-Ruta::Ruta(int codigo, int longitud, string transporte, float duracion, string publico, int maxPart, string fechaHora, Sendero sendero){
+Ruta::Ruta(list<Sendero>::iterator sendero,int codigo, int longitud, string transporte, float duracion, string publico, int maxPart, string fechaHora){
 	setCodigo(codigo);
 	setLongitud(longitud);
 	setTransporte(transporte);
@@ -16,7 +16,7 @@ Ruta::Ruta(int codigo, int longitud, string transporte, float duracion, string p
 	setSendero(sendero);
 	aforoCompleto_ = false; //La ruta empieza sin participantes al crearla
 
-	globalRutas.push_back(this);
+	globalRutas.push_back(*this);
 }
 
 

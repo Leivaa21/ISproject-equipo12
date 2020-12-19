@@ -14,9 +14,11 @@ using namespace std;
 TEST(Ruta, addParticipante){
 
 	Parque Cordoba = Parque("Cordoba",5000,"Cordoba","Cordoba","Cordoba","07-10-95","");
-	Sendero Nevado = Sendero("Nevado", "Clima nevado", "Media", "a", Cordoba);
+	Sendero Nevado = Sendero("Nevado", "Clima nevado", "Media", "ABIERTO");
 	//Ruta rut = Ruta(00,7,"Ninguno",45,"17-05-2021, 19:00", Nevado,15);
-	Ruta rut = Ruta();
+	
+	Sendero x;
+	Ruta rut(globalSenderos.begin());
 
 	Visitante v1 = Visitante("Antonio","Fernandez","Fernandez","52819202G","12-02-01",681280132);
 	

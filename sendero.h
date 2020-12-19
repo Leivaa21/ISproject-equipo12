@@ -1,12 +1,10 @@
-#ifndef SENDERO_H
-#define SENDERO_H
-#include <string>
+#ifndef __SENDERO__
+#define __SENDERO__
+
 #include "incidencia.h"
-#include "parque.h"
-#include "ruta.h"
 
-using namespace std;
-
+class Ruta;
+class Parque;
 list<Sendero> globalSenderos;
 
 class Sendero{ //Clase Sendero
@@ -14,10 +12,10 @@ class Sendero{ //Clase Sendero
 	private:
 		string nombre_, descripcion_, dificultad_, disponibilidad_;
 		list<Incidencia> incidencias_;
-		Parque parque_;
+		list<Parque>::iterator parque_;
 
 	public:
-		Sendero(string nombre="\0", string descripcion="\0", string dificultad="\0", string disponibilidad="NO DISPONIBLE", Parque parque=globalParques.front());
+		Sendero(string nombre="\0", string descripcion="\0", string dificultad="\0", string disponibilidad="NO DISPONIBLE");
 
 		inline void setNombre(string nombre) {nombre_=nombre;}
 		inline string getNombre() const {return nombre_;}
@@ -31,10 +29,10 @@ class Sendero{ //Clase Sendero
 		bool setDisponibilidad(string disponibilidad);
 		inline string getDisponibilidad() const {return disponibilidad_;}
 
-		inline void setParque(Parque parque) {parque_=parque;}
-		inline Parque getParque() const {return parque_;}
+		inline void setParque(list<Parque>::iterator parque) {parque_=parque;}
+		inline list<Parque>::iterator getParque() const {return parque_;}
 		
-		bool addIncidencia(int id, string descripcion, Ruta ruta);
+		bool addIncidencia(int id, string descripcion, list<Ruta>::iterator ruta);
 		bool removeIncidencia(int id);
 
 		inline void setIncidencias(list<Incidencia> incidencias) {incidencias_=incidencias;}

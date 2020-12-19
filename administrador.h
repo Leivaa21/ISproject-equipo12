@@ -10,6 +10,8 @@
 #include "reserva.h"
 #include "monitor.h"
 #include "incidencia.h"
+
+using std::cout;
 /**
  * La clase Administrador da forma al rol de Administrador, la persona  con 
  * dicho rol debe de poder gestionar la aplicación y los datos de la misma.

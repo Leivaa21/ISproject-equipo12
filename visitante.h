@@ -10,6 +10,8 @@
 #include <list>
 using std::list;
 
+class Visitante;
+list<Visitante> globalVisitantes;
 
 /**
  * La clase Visitante sirve como formato para guardar a cada visitante/cliente, 
