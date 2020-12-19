@@ -24,7 +24,7 @@ bool Ruta::addParticipante(Visitante v){
 
 	list<Visitante>::iterator it; //Creamos iterador
 	//Comprobamos que no se ha llegado al limite de participantes
-	if(getMaxParticipantes() > participantes_.size()){ 
+	if(getMaxParticipantes() > (int)participantes_.size()){ 
 	
 		//Comprobamos si el participante se encuentra ya en la ruta
 		for(it=participantes_.begin(); it!=participantes_.end(); ++it){
