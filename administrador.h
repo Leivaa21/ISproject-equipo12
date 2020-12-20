@@ -69,44 +69,44 @@ class Administrador : public Persona {
         /**
          * @function addReserva()
          * @param <string> id
-         * @param <Visitante> visitante
-         * @param <Ruta> ruta
+         * @param <list<Visitante>::iterator> itvisitante 
+         * @param <list<Ruta>::iterator> itruta
          * 
-         * Recibe un id, un visitante y una ruta y crea una reserva,
-         * al crear la reserva la añade a la lista global "globalReservas" y
-         * retorna true
-         * Si no se pudo crear la reserva retornara false y dara un mensaje de
-         * error 
+         * Recibe un id, un iterador de lista visitante y un iterador de la lista de rutas y 
+         * crea una reserva y añade al participante a la ruta correspondiente y la retorna
+         * Si no se pudo crear la reserva dara un mensaje de error por consola 
          * 
-         * @return <bool> true|false
+         * @return <Reserva> x(id, itvisitante, itruta)
          */
-        bool addReserva(string id, Visitante visitante, Ruta ruta);
+        Reserva Administrador::addReserva(string id, list<Visitante>::iterator itvisitante, list<Ruta>::iterator itruta);
 
         /**
          * @function removeReserva()
+         * @param <list<Reserva>> *Reservas
          * @param <Reserva> reserva
          * 
-         * Recibe una reserva y la borra utilizando los iteradores, si pudo
-         * eliminar la reserva retornara true, si no pudo borrar el participante 
-         * retornara false y enviara un mensaje de error por consola, al igual que
-         * si no pudo elimirar la reserva por completo.
+         * Recibe un puntero a la lista de reservas y una reserva y la borra utilizando 
+         * los iteradores, si pudo eliminar la reserva retornara true, si no pudo borrar 
+         * el participante retornara false y enviara un mensaje de error por consola, 
+         * al igual que si no pudo elimirar la reserva por completo.
          * 
          * @return <bool> true|false
          */
-        bool removeReserva(Reserva reserva);
+        bool removeReserva(list<Reserva> *Reservas, Reserva reserva);
 
         /**
          * @function removeReserva()
+         * @param <list<Reserva>> *Reservas
          * @param <string> id 
          * 
-         * Recibe el id de una reserva y la borra utilizando los iteradores, si pudo
-         * elimiar la reserva retornara true, si no pudo borrar el participante 
-         * retornara false y enviara un mensaje de error por consola, al igual que
-         * si no pudo elimirar la reserva por completo.
+         * Recibe un puntero a la lista de reservas y un id de una reserva y la borra 
+         * utilizando los iteradores, si pudo eliminar la reserva retornara true, si no pudo 
+         * borrar el participante retornara false y enviara un mensaje de error por consola, 
+         * al igual que si no pudo elimirar la reserva por completo.
          * 
          * @return <bool> true|false
          */
-        bool removeReserva(string id);
+        bool removeReserva(list<Reserva> *Reservas, string id);
         
         /**
          * @function addParque();
@@ -119,9 +119,9 @@ class Administrador : public Persona {
          * @param <string> reconocimiento
          * 
          * Recibe los parametros necesarios para iniciar un objeto de clase 
-         * Parque y lo añade a la lista global "globalParques"
+         * Parque y lo retorna
          */
-        void addParque(string nombre, int superficie, string ubicacion, string provincia, string municipio, string fecha, string reconocimiento);
+        Parque addParque(string nombre, int superficie, string ubicacion, string provincia, string municipio, string fecha, string reconocimiento);
         
         /**
          * @function addMonitor();
@@ -136,21 +136,21 @@ class Administrador : public Persona {
          * @param <string> direccion
          * 
          * Recibe los parametros necesarios para iniciar un objeto de clase 
-         * monitor y lo añade a la lista global "globalMonitores"
+         * monitor y lo retorna
          */        
-        void addMonitor(string correo, string password, string nombre, string apellido1, string apellido2, string dni, string fecha, int telefono, string direccion);
+        Monitor addMonitor(string correo, string password, string nombre, string apellido1, string apellido2, string dni, string fecha, int telefono, string direccion);
         
 
         /**
          * @function getParticipantes();
-         * @param <int> codigo
+         * @param <list<Ruta>::iterator> itruta
          * 
-         * Recibe el codigo de una ruta y retorna su lista de participantes
+         * Recibe un iterador de la lista de ruta y retorna su lista de participantes
          * Si no pudo encontrarla manda un mensaje de error por la consola
          * 
          * @return  list<Visitante> 
          */
-        list<Visitante> getParticipantes(int codigo);
+        list<Visitante> getParticipantes(list<Ruta>::iterator itruta);
 
         /**
          * @function getIncidencia();
@@ -166,24 +166,24 @@ class Administrador : public Persona {
 
         /**
          * @function modificarEstadoSendero()
-         * @param <string> sendero
+         * @param <list<Sendero>::iterator> sendero
          * @param <stringf> disponibilidad
          * 
-         * Recibe un sendero y la disponibilidad que deberia de tener y lo 
-         * actualiza desde la lista globalSenderos, si pudo modificarlo retorna
-         * true y si no pudo retornara false con un mensaje de error
+         * Recibe un iterador a sendero y la disponibilidad que deberia de tener y lo 
+         * actualiza , si pudo modificarlo retorna true y si no pudo 
+         * retornara false con un mensaje de error
          * 
          * @return <bool> true|false
          */
-        bool modificarEstadoSendero(string sendero, string disponibilidad);
+        bool modificarEstadoSendero(list<Sendero>::iterator itsendero, string disponibilidad);
 
         /**
          * @function listParques()
+         * @param <list<Parque>> Parques
          * 
-         * Lista el nombre de todos los parques incluidos en la lista
-         * global "globalParques"
+         * Lista el nombre de todos los parques incluidos en la lista Parques
          */
-        void listParques();
+        void listParques(list<Parque> Parques);
         };
 
 #endif

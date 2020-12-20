@@ -5,28 +5,18 @@ Administrador::Administrador(string correo, string password, string nombre, stri
     setPassword(password);
 }
 
-bool Administrador::addReserva(string id, Visitante visitante, Ruta ruta){
+Reserva Administrador::addReserva(string id, list<Visitante>::iterator itvisitante, list<Ruta>::iterator itruta){
 
-    list<Visitante>::iterator itvisitante;
-    for(auto i = globalVisitantes.begin(); i!= globalVisitantes.end(); i++)
-        if(visitante.getDni()==i->getDni()) itvisitante = i;
-    
-    list<Ruta>::iterator itruta;
-    for(auto i = globalRutas.begin(); i!= globalRutas.end(); i++)
-        if(ruta.getCodigo()==i->getCodigo()) itruta = i;
-
-    if(ruta.addParticipante(visitante)){
+    if(itruta->addParticipante(*itvisitante)){
         Reserva x(id, itvisitante, itruta);
-        globalReservas.push_back(x);
-        return true;
+        return x;
     }
     cout<<"ERROR: No se pudo crear la reserva\n";
-    return false;
 };
 
-bool Administrador::removeReserva(Reserva reserva){
+bool Administrador::removeReserva(list<Reserva> *Reservas,Reserva reserva){
 
-    for(auto i=globalReservas.begin(); i!=globalReservas.end(); i++){
+    for(auto i=Reservas->begin(); i!=Reservas->end(); i++){
         if(reserva.getID()==i->getID()){
             list<Ruta>::iterator r=reserva.getRuta();
             list<Visitante>::iterator itvisitante = reserva.getVisitante();
@@ -34,7 +24,7 @@ bool Administrador::removeReserva(Reserva reserva){
                 cout<<"ERROR: No se pudo eliminar la reserva (participante no encontrado).\n";
                 return false;
             }
-            globalReservas.erase(i);
+            Reservas->erase(i);
             return true;
         }
     }
@@ -43,9 +33,9 @@ bool Administrador::removeReserva(Reserva reserva){
 }
 
 
-bool Administrador::removeReserva(string id){
+bool Administrador::removeReserva(list<Reserva> *Reservas, string id){
 
-    for(auto i=globalReservas.begin(); i!=globalReservas.end(); i++){
+    for(auto i=Reservas->begin(); i!=Reservas->end(); i++){
         if(id==i->getID()){
             list<Ruta>::iterator r=i->getRuta();
             list<Visitante>::iterator itvisitante = i->getVisitante();
@@ -53,7 +43,7 @@ bool Administrador::removeReserva(string id){
                 cout<<"ERROR: No se pudo eliminar la reserva (participante no encontrado).\n";
                 return false;
             }
-            globalReservas.erase(i);
+            Reservas->erase(i);
             return true;
         }
     }
@@ -62,22 +52,18 @@ bool Administrador::removeReserva(string id){
 
 }
 
-void Administrador::addParque(string nombre, int superficie, string ubicacion, string provincia, string municipio, string fecha, string reconocimiento){
+Parque Administrador::addParque(string nombre, int superficie, string ubicacion, string provincia, string municipio, string fecha, string reconocimiento){
     Parque x(nombre, superficie, ubicacion, provincia, municipio, fecha, reconocimiento);
-    globalParques.push_back(x);
+    return x;
 }
 
-void Administrador::addMonitor(string correo, string password, string nombre, string apellido1, string apellido2, string dni, string fecha, int telefono, string direccion){
+Monitor Administrador::addMonitor(string correo, string password, string nombre, string apellido1, string apellido2, string dni, string fecha, int telefono, string direccion){
     Monitor x(correo,password,nombre,apellido1,apellido2,dni,fecha,telefono,direccion);
-    globalMonitores.push_back(x);
+    return x;
 }
 
-list<Visitante> Administrador::getParticipantes(int codigo){
-    for(auto i=globalRutas.begin(); i!=globalRutas.end(); i++){
-        if(i->getCodigo()==codigo){
-            return i->getParticipantes();
-        }
-    }
+list<Visitante> Administrador::getParticipantes(list<Ruta>::iterator itruta){
+    return itruta->getParticipantes();
     cout<<"ERROR: No se pudo encontrar ninguna ruta con el codigo introducido.\n";
 }
 
@@ -93,18 +79,15 @@ Incidencia Administrador::getIncidencia(Sendero sendero, int id){
     cout<<"ERROR: No se pudo encontrar ninguna incidencia con el id introducido.\n";
 }
 
-bool Administrador::modificarEstadoSendero(string sendero, string disponibilidad){
-    for(auto i=globalSenderos.begin(); i!=globalSenderos.end(); i++){
-        if(i->getNombre()==sendero){
-            if(i->setDisponibilidad(disponibilidad))return true;
-        }
-    }
+bool Administrador::modificarEstadoSendero(list<Sendero>::iterator itsendero, string disponibilidad){
+
+    if(itsendero->setDisponibilidad(disponibilidad))return true;
     cout<<"ERROR: No se pudo modificar el esado del sendero\n";
     return false;
 }
 
-void Administrador::listParques(){
+void Administrador::listParques(list<Parque> Parques){
     cout<<"Parques: \n";
-    for(auto i=globalParques.begin(); i!=globalParques.end(); i++)
+    for(auto i=Parques.begin(); i!=Parques.end(); i++)
         cout<<i->getNombre()<<"\n";
 }
