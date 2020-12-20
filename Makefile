@@ -14,7 +14,8 @@
 
 # Points to the root of Google Test, relative to where this file is.
 # Remember to tweak this if you move this file.
-GTEST_DIR = /home/leivaa/Escritorio/Uni/POO/googletest-release-1.10.0/googletest
+GTEST_DIR = /home/leivaa/Escritorio/projectis/googletest/googletest
+
 # Where to find user code.
 # USER_DIR = ../samples
 
@@ -24,7 +25,7 @@ GTEST_DIR = /home/leivaa/Escritorio/Uni/POO/googletest-release-1.10.0/googletest
 CPPFLAGS += -isystem $(GTEST_DIR)/include
 
 # Flags passed to the C++ compiler.
-CXXFLAGS += -g -Wall -Wextra -pthread -std=gnu++11
+CXXFLAGS += -g -Wall -pthread -std=gnu++11
 
 # All tests produced by this Makefile.  Remember to add new tests you
 # created to the list.
@@ -41,7 +42,7 @@ GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
 all : $(TESTS)
 
 clean :
-	rm -f $(TESTS) gtest.a gtest_main.a *.o ??XX.txt
+	rm -f $(TESTS) gtest.a gtest_main.a *.o
 
 # Builds gtest.a and gtest_main.a.
 
@@ -73,24 +74,25 @@ gtest_main.a : gtest-all.o gtest_main.o
 
 persona.o : persona.h persona.cc
 
-visitante.o: visitante.h visitante.cc persona.h persona.cc
+visitante.o: visitante.h visitante.cc
 
-administrador.o: administrador.h administrador.cc persona.h persona.cc reserva.h reserva.cc visitante.h visitante.cc ruta.h ruta.cc sendero.h sendero.cc parque.h parque.cc monitor.h monitor.cc incidencia.h incidencia.cc
+administrador.o: administrador.h administrador.cc
 
-monitor.o: monitor.h monitor.cc persona.h persona.cc sendero.h sendero.cc incidencia.h incidencia.cc parque.h parque.cc ruta.h ruta.cc visitante.h visitante.cc
+monitor.o: monitor.h monitor.cc
 
-parque.o: parque.h parque.cc sendero.h sendero.cc incidencia.h incidencia.cc ruta.h ruta.cc visitante.h visitante.cc persona.h persona.cc
+parque.o: parque.h parque.cc
 
-incidencia.o: incidencia.h incidencia.cc ruta.h ruta.cc visitante.h visitante.cc persona.h persona.cc sendero.h sendero.cc parque.h parque.cc
+incidencia.o: incidencia.h incidencia.cc
 
-sendero.o: sendero.h sendero.cc incidencia.h incidencia.cc ruta.h ruta.cc visitante.h visitante.cc persona.h persona.cc parque.h parque.cc
+sendero.o: sendero.h sendero.cc
 
-ruta.o: ruta.h ruta.cc sendero.h sendero.cc incidencia.h incidencia.cc visitante.h visitante.cc persona.h persona.cc parque.h parque.cc
+ruta.o: ruta.h ruta.cc 
 
-reserva.o: reserva.h reserva.cc ruta.h ruta.cc sendero.h sendero.cc incidencia.h incidencia.cc visitante.h visitante.cc persona.h persona.cc parque.h parque.cc
+reserva.o: reserva.h reserva.cc
 
-ruta_unittest.o : ruta_unittest.cc ruta.h ruta.cc sendero.h sendero.cc incidencia.h incidencia.cc visitante.h visitante.cc persona.h persona.cc parque.h parque.cc
 
-ruta_unittest : ruta.o ruta_unittest.o gtest_main.a
+ruta_unittest.o : ruta_unittest.cc ruta.cc ruta.h sendero.h sendero.cc visitante.h visitante.cc incidencia.h incidencia.cc persona.h persona.cc
+
+ruta_unittest : ruta_unittest.o ruta.o sendero.o visitante.o incidencia.o persona.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
 
