@@ -31,7 +31,7 @@ bool Parque::addSendero(Sendero *sendero)
 
 	senderos_.push_back(*sendero);
 
-	cout << "Sendero a�adido con exito\n";
+	cout << "Sendero incluido con exito\n";
 
 	return true;
 
@@ -84,7 +84,7 @@ bool Parque::addRuta(Ruta *ruta)
 
 	rutas_.push_back(*ruta);
 
-	cout << "Ruta a�adida con exito\n";
+	cout << "Ruta incluida con exito\n";
 
 	return true;
 

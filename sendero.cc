@@ -32,6 +32,8 @@ bool Sendero::setDisponibilidad(string disponibilidad){
 bool Sendero::addIncidencia(int id, string descripcion, list<Ruta>::iterator ruta){
 	Incidencia x(id, descripcion, ruta);
 	incidencias_.push_back(x);
+
+	return true;
 }
 
 bool Sendero::removeIncidencia(int id){
