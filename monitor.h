@@ -12,7 +12,7 @@
 #include "parque.h"
 #include "ruta.h"
 
-
+class Monitor;
 std::list<Monitor> globalMonitores; /**< Lista global de monitores */
 
 
