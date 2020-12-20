@@ -30,3 +30,13 @@ TEST(Ruta, addParticipante){
 	EXPECT_EQ(681280132, rut.getParticipantes().begin()->getTelefono());
 
 }
+
+TEST(Ruta, Constructor){
+
+Sendero Nevado = Sendero("Nevado", "Clima nevado", "Media", "ABIERTO");
+Ruta rut(Nevado,2,10,"Ninguno",45,"Adulto",15,"14-02-2021, 19:00");
+
+EXPECT_EQ(2,rut.getCodigo());
+EXPECT_EQ("Ninguno",rut.getTransporte());
+	
+}
