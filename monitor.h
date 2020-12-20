@@ -128,7 +128,7 @@ class Monitor : public Persona{
          *
          * Devuelve un objeto de tipo Ruta
          */
-        Ruta añadirRuta(int codigo, int longitud, string transporte, float duracion, string publico, int maxPart, string fechaHora, list<Sendero>::iterator sendero);
+        Ruta addRuta(int codigo, int longitud, string transporte, float duracion, string publico, int maxPart, string fechaHora, list<Sendero>::iterator sendero);
 
         /**
          * La siguiente funcion recibe el identificador de una ruta (Su variable codigo_) y elimina ese objeto de la lista de rutas de ese parque
@@ -137,7 +137,7 @@ class Monitor : public Persona{
          * @param <Parque> parque 
          * Recibe el codigo de la ruta y la elimina de la lista
         */
-        void eliminarRuta(int codigo, Parque parque);
+        void removeRuta(int codigo, Parque parque);
 
         /**
          * La siguiente funcion recibe el identificador de una ruta (Su variable codigo_) y retorna una lista con

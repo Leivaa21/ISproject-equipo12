@@ -78,7 +78,7 @@ class Administrador : public Persona {
          * 
          * @return <Reserva> x(id, itvisitante, itruta)
          */
-        Reserva Administrador::addReserva(string id, list<Visitante>::iterator itvisitante, list<Ruta>::iterator itruta);
+        Reserva addReserva(string id, list<Visitante>::iterator itvisitante, list<Ruta>::iterator itruta);
 
         /**
          * @function removeReserva()

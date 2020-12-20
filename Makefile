@@ -29,7 +29,7 @@ CXXFLAGS += -g -Wall -pthread -std=gnu++11
 
 # All tests produced by this Makefile.  Remember to add new tests you
 # created to the list.
-TESTS = ruta_unittest
+TESTS = ruta_unittest administrador_unittest sendero_unittest parque_unittest
 
 # All Google Test headers.  Usually you shouldn't change this
 # definition.
@@ -74,24 +74,35 @@ gtest_main.a : gtest-all.o gtest_main.o
 
 persona.o : persona.h persona.cc
 
-visitante.o: visitante.h visitante.cc
+visitante.o: visitante.h visitante.cc persona.h persona.cc
 
-administrador.o: administrador.h administrador.cc
+administrador.o: administrador.h administrador.cc persona.h persona.cc reserva.h reserva.cc visitante.h visitante.cc ruta.h ruta.cc sendero.h sendero.cc parque.h parque.cc monitor.h monitor.cc incidencia.h incidencia.cc
 
-monitor.o: monitor.h monitor.cc
+monitor.o: monitor.h monitor.cc persona.h persona.cc sendero.h sendero.cc incidencia.h incidencia.cc parque.h parque.cc ruta.h ruta.cc visitante.h visitante.cc
 
-parque.o: parque.h parque.cc
+parque.o: parque.h parque.cc sendero.h sendero.cc incidencia.h incidencia.cc ruta.h ruta.cc visitante.h visitante.cc persona.h persona.cc
 
-incidencia.o: incidencia.h incidencia.cc
+incidencia.o: incidencia.h incidencia.cc ruta.h ruta.cc visitante.h visitante.cc persona.h persona.cc sendero.h sendero.cc parque.h parque.cc
 
-sendero.o: sendero.h sendero.cc
+sendero.o: sendero.h sendero.cc incidencia.h incidencia.cc ruta.h ruta.cc visitante.h visitante.cc persona.h persona.cc parque.h parque.cc
 
-ruta.o: ruta.h ruta.cc 
+ruta.o: ruta.h ruta.cc sendero.h sendero.cc visitante.h visitante.cc incidencia.h incidencia.cc persona.h persona.cc
 
-reserva.o: reserva.h reserva.cc
+reserva.o:  reserva.h reserva.cc ruta.h ruta.cc sendero.h sendero.cc incidencia.h incidencia.cc visitante.h visitante.cc persona.h persona.cc parque.h parque.cc
 
+sendero_unittest.o: sendero_unittest.cc sendero.cc sendero.h
 
-ruta_unittest.o : ruta_unittest.cc ruta.cc ruta.h sendero.h sendero.cc visitante.h visitante.cc incidencia.h incidencia.cc persona.h persona.cc
+sendero_unittest: sendero_unittest.o sendero.o gtest_main.a
+
+parque_unittest.o: parque_unittest.cc parque.cc parque.h 
+
+parque_unittest: parque_unittest.o parque.o gtest_main.a
+
+administrador_unittest.o: administrador_unittest.cc administrador.cc administrador.h
+
+administrador_unittest: administrador_unittest.o administrador.o gtest_main.a
+
+ruta_unittest.o : ruta_unittest.cc ruta.cc ruta.h 
 
 ruta_unittest : ruta_unittest.o ruta.o sendero.o visitante.o incidencia.o persona.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@

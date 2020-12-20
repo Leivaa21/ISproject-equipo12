@@ -15,16 +15,17 @@ Incidencia Monitor::notificarIncidencia(int id, string descripcion, list<Ruta>::
 	
 	if(!sendero->addIncidencia(id,descripcion,itruta))
 		std::cout<<"Error: no se pudo añadir la incidencia.\n";
-	else
+	else{
 		Incidencia x(id, descripcion, itruta);
 		return x;
+	}
 	
 }
 
-Ruta Monitor::añadirRuta(int codigo, int longitud, string transporte, float duracion, string publico, int maxPart, string fechaHora, list<Sendero>::iterator itsendero){
+Ruta Monitor::addRuta(int codigo, int longitud, string transporte, float duracion, string publico, int maxPart, string fechaHora, list<Sendero>::iterator itsendero){
 
 	//Obtenemos el parque para añadir la ruta
-	list<Parque>::iterator parque = sendero->getParque();
+	list<Parque>::iterator parque = itsendero->getParque();
 
 	Ruta x(itsendero,codigo,longitud,transporte,duracion,publico,maxPart,fechaHora);
 	
@@ -32,7 +33,7 @@ Ruta Monitor::añadirRuta(int codigo, int longitud, string transporte, float dur
 
 }
 
-void Monitor::eliminarRuta(int codigo, Parque parque){
+void Monitor::removeRuta(int codigo, Parque parque){
 
 	//Eliminamos la ruta
 	parque.removeRuta(codigo);
