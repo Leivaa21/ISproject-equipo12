@@ -20,8 +20,8 @@ bool Administrador::addReserva(string id, Visitante visitante, Ruta ruta){
         globalReservas.push_back(x);
         return true;
     }
-    else return false;
-
+    cout<<"ERROR: No se pudo crear la reserva\n";
+    return false;
 };
 
 bool Administrador::removeReserva(Reserva reserva){
@@ -78,7 +78,7 @@ list<Visitante> Administrador::getParticipantes(int codigo){
             return i->getParticipantes();
         }
     }
-    cout<<"No se pudo encontrar ninguna ruta con el codigo introducido.\n";
+    cout<<"ERROR: No se pudo encontrar ninguna ruta con el codigo introducido.\n";
 }
 
 Incidencia Administrador::getIncidencia(Sendero sendero, int id){
@@ -90,7 +90,7 @@ Incidencia Administrador::getIncidencia(Sendero sendero, int id){
             return *i;
         }
     }
-    cout<<"No se pudo encontrar ninguna incidencia con el id introducido.\n";
+    cout<<"ERROR: No se pudo encontrar ninguna incidencia con el id introducido.\n";
 }
 
 bool Administrador::modificarEstadoSendero(string sendero, string disponibilidad){
@@ -99,5 +99,12 @@ bool Administrador::modificarEstadoSendero(string sendero, string disponibilidad
             if(i->setDisponibilidad(disponibilidad))return true;
         }
     }
+    cout<<"ERROR: No se pudo modificar el esado del sendero\n";
     return false;
+}
+
+void Administrador::listParques(){
+    cout<<"Parques: \n";
+    for(auto i=globalParques.begin(); i!=globalParques.end(); i++)
+        cout<<i->getNombre()<<"\n";
 }
