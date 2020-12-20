@@ -4,7 +4,7 @@
 #include "incidencia.h"
 
 Incidencia::Incidencia(int id, string desc, list<Ruta>::iterator ruta){
-	setId(id);
+	setID(id);
 	setDescripcion(desc);
 	setRuta(ruta);
 }
