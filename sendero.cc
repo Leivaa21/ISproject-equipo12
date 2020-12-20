@@ -6,7 +6,6 @@ Sendero::Sendero(string nombre, string descripcion, string dificultad, string di
 	setDescripcion(descripcion);
 	setDificultad(dificultad);
 	setDisponibilidad(disponibilidad);
-	globalSenderos.push_back(*this);
 }
 
 bool Sendero::setDisponibilidad(string disponibilidad){
@@ -29,9 +28,9 @@ bool Sendero::setDisponibilidad(string disponibilidad){
 	return false;
 }
 
-bool Sendero::addIncidencia(int id, string descripcion, list<Ruta>::iterator ruta){
+Incidencia Sendero::addIncidencia(int id, string descripcion, list<Ruta>::iterator ruta){
 	Incidencia x(id, descripcion, ruta);
-	incidencias_.push_back(x);
+	return x;
 
 	return true;
 }

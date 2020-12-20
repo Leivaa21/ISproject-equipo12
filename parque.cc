@@ -12,8 +12,6 @@ Parque::Parque(string nombre, int superficie, string ubicacion, string provincia
 	setMunicipio(municipio);
 	setFecha(fecha);
 	setReconocimiento(reconocimiento);
-
-	globalParques.push_back(*this);
 }
 
 bool Parque::addSendero(Sendero *sendero)

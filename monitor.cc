@@ -8,34 +8,27 @@ Monitor::Monitor(string correo, string password, string nombre, string apellido1
     setTelefono(telefono);
 }
 
-void Monitor::notificarIncidencia(int id, string descripcion, Ruta ruta){
+Incidencia Monitor::notificarIncidencia(int id, string descripcion, list<Ruta>::iterator itruta){
 
 	//Obtenemos sendero donde se ha producido la incidencia
-	list<Sendero>::iterator sendero = ruta.getSendero();
-	list<Ruta>::iterator itruta;
-	for(auto i = globalRutas.begin(); i!=globalRutas.end(); i++){
-		if(ruta.getCodigo()==i->getCodigo()) itruta=i;
-	}
+	list<Sendero>::iterator sendero = itruta->getSendero();
+	
 	if(!sendero->addIncidencia(id,descripcion,itruta))
 		std::cout<<"Error: no se pudo añadir la incidencia.\n";
 	else
-		std::cout<<"Incidencia añadida con exito.\n";
+		Incidencia x(id, descripcion, itruta);
+		return x;
 	
 }
 
-void Monitor::añadirRuta(int codigo, int longitud, string transporte, float duracion, string publico, int maxPart, string fechaHora, Sendero sendero){
+Ruta Monitor::añadirRuta(int codigo, int longitud, string transporte, float duracion, string publico, int maxPart, string fechaHora, list<Sendero>::iterator itsendero){
 
 	//Obtenemos el parque para añadir la ruta
-	list<Parque>::iterator parque = sendero.getParque();
-	list<Sendero>::iterator itsendero;
+	list<Parque>::iterator parque = sendero->getParque();
 
-	for(auto i = globalSenderos.begin(); i!=globalSenderos.end(); i++){
-		if (sendero.getNombre()==i->getNombre()) itsendero=i;
-	}
 	Ruta x(itsendero,codigo,longitud,transporte,duracion,publico,maxPart,fechaHora);
 	
-
-	parque->addRuta(&x);
+	return x;
 
 }
 

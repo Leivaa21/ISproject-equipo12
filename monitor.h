@@ -12,8 +12,8 @@
 #include "parque.h"
 #include "ruta.h"
 
-class Monitor;
-std::list<Monitor> globalMonitores; /**< Lista global de monitores */
+
+std::list<Monitor> globalMonitores;
 
 
 /**
@@ -30,17 +30,13 @@ class Monitor : public Persona{
     public:
     
         /**
-         * @function Monitor()
+         * @function Persona()
          * 
-         * @param <string> correo 
-         * @param <string> password 
-         * @param <string> nombre 
+         * @param <string> nombre, 
          * @param <string> apellido1
          * @param <string> apellido2
          * @param <string> dni
          * @param <string> fecha 
-         * @param <int> telefono
-         * @param <string> direccion
          * 
          * Constructor de clase. Nos pide como parametros todas sus variables
          * y retorna un objeto de dicha clase.
@@ -114,14 +110,14 @@ class Monitor : public Persona{
          * @function notificarIncidencia() 
          * @param <int> id
          * @param <string> descripcion
-         * @param <Ruta> ruta
-         * Recibe los parametros de la incidencia y añade un objeto a la lista de incidencias del sendero
+         * @param <list<Ruta>::iterator> ruta
+         * Recibe los parametros de la incidencia y devuelve un objeto de tipo incidencia
          */
-        void notificarIncidencia(int id, string descripcion, Ruta ruta);
+        Incidencia notificarIncidencia(int id, string descripcion, list<Ruta> ::iterator ruta);
 
         /**
-         * La siguiente funcion recibe los parámetros propios de la clase ‘Ruta’ y añade un objeto a la lista
-         * de rutas de un parque
+         * La siguiente funcion recibe los parámetros propios de la clase ‘Ruta’ y añade un objeto de tipo
+         * Ruta
          *
          * @function añadirRuta() 
          * @param <int> codigo
@@ -131,11 +127,11 @@ class Monitor : public Persona{
          * @param <string> publico
          * @param <int> maxPart
          * @param <string> fechaHora
-         * @param <Sendero> sendero
+         * @param <list<Sendero>::iterator> sendero
          *
-         * Añade un objeto a la lista de rutas del parque
+         * Devuelve un objeto de tipo Ruta
          */
-        void añadirRuta(int codigo, int longitud, string transporte, float duracion, string publico, int maxPart, string fechaHora, Sendero sendero);
+        Ruta añadirRuta(int codigo, int longitud, string transporte, float duracion, string publico, int maxPart, string fechaHora, list<Sendero>::iterator sendero);
 
         /**
          * La siguiente funcion recibe el identificador de una ruta (Su variable codigo_) y elimina ese objeto de la lista de rutas de ese parque

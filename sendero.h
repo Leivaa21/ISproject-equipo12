@@ -10,7 +10,6 @@
 
 class Ruta;
 class Parque;
-list<Sendero> globalSenderos;
 
 /**
  * La clase Sednero gestiona los datos y problemas en los senderos del parque.

@@ -10,7 +10,6 @@
 #include "sendero.h"
 
 class Parque;
-list<Parque> globalParques;
 
 /**
  * La clase Parque gestiona los datos y dependecias del parque.
