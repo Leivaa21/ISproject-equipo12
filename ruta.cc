@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include "ruta.h"
-using namespace std;
 
 Ruta::Ruta(list<Sendero>::iterator sendero,int codigo, int longitud, string transporte, float duracion, string publico, int maxPart, string fechaHora){
 	setCodigo(codigo);
@@ -16,7 +15,6 @@ Ruta::Ruta(list<Sendero>::iterator sendero,int codigo, int longitud, string tran
 	setSendero(sendero);
 	aforoCompleto_ = false; //La ruta empieza sin participantes al crearla
 
-	globalRutas.push_back(*this);
 }
 
 
@@ -29,7 +27,7 @@ bool Ruta::addParticipante(Visitante v){
 		//Comprobamos si el participante se encuentra ya en la ruta
 		for(it=participantes_.begin(); it!=participantes_.end(); ++it){
 			if((*it).getDni() == v.getDni()){
-				cout<<"Error: el visitante ya se encuentra inscrito en la ruta.\n";
+				std::cout<<"Error: el visitante ya se encuentra inscrito en la ruta.\n";
 				return false;
 			}
 		}
@@ -37,7 +35,7 @@ bool Ruta::addParticipante(Visitante v){
 		return true;
 	}
 	else {
-		cout<<"Error: No fue posible añadir un nuevo participante (Limite de participantes alcanzado)\n";
+		std::cout<<"Error: No fue posible añadir un nuevo participante (Limite de participantes alcanzado)\n";
 		return false;
 	}
 }
@@ -60,12 +58,12 @@ void Ruta::abreRuta(){
 	if(aforoCompleto_==true)
 		aforoCompleto_=false;
 	else
-		cout<<"Esta ruta ya se encuentra abierta.\n";
+		std::cout<<"Esta ruta ya se encuentra abierta.\n";
 }
 
 void Ruta::cierraRuta(){
 	if(aforoCompleto_==false)
 		aforoCompleto_=true;
 	else
-		cout<<"Esta ruta ya se encuentra cerrada.\n";
+		std::cout<<"Esta ruta ya se encuentra cerrada.\n";
 }

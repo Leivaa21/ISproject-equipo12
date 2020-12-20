@@ -17,7 +17,6 @@ class Visitante;
 class Ruta;
 
 class Reserva;
-list<Reserva> globalReservas; /**< Lista global de reservas*/
 
 /**
  * La clase reserva da forma a una reserva cualquiera de un visitante en una ruta.
