@@ -13,7 +13,7 @@
 #include "ruta.h"
 
 
-std::list<Monitor> globalMonitores;
+std::list<Monitor> globalMonitores; /**< Lista global de monitores */
 
 
 /**
@@ -30,13 +30,17 @@ class Monitor : public Persona{
     public:
     
         /**
-         * @function Persona()
+         * @function Monitor()
          * 
-         * @param <string> nombre, 
+         * @param <string> correo 
+         * @param <string> password 
+         * @param <string> nombre 
          * @param <string> apellido1
          * @param <string> apellido2
          * @param <string> dni
          * @param <string> fecha 
+         * @param <int> telefono
+         * @param <string> direccion
          * 
          * Constructor de clase. Nos pide como parametros todas sus variables
          * y retorna un objeto de dicha clase.
