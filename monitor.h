@@ -13,9 +13,6 @@
 #include "ruta.h"
 
 
-std::list<Monitor> globalMonitores;
-
-
 /**
  * La clase Monitor da forma al rol de Monitor, la persona  con dicho rol 
  * debe de poder gestionar algunos aspectos de la aplicación tales como rutas 
