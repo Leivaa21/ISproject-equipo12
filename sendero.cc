@@ -28,9 +28,9 @@ bool Sendero::setDisponibilidad(string disponibilidad){
 	return false;
 }
 
-Incidencia Sendero::addIncidencia(int id, string descripcion, list<Ruta>::iterator ruta){
+bool Sendero::addIncidencia(int id, string descripcion, list<Ruta>::iterator ruta){
 	Incidencia x(id, descripcion, ruta);
-	return x;
+	incidencias_.push_back(x);
 
 	return true;
 }
