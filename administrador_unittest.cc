@@ -3,9 +3,12 @@
  * @contiene Tests para la clase Administrador
  * @author Adrian Leiva Rojano
  */
-
+#include <list>
+#include <string>
 #include "administrador.h"
 #include "gtest/gtest.h"
+
+using namespace std;
 
 TEST(Administrador, Constructor){
     Administrador Admin1("example@uco.es", "f3fb3asx", "Manuel", "Leonado", "Lopez", "82930491J", "20/10/95");
@@ -26,17 +29,16 @@ TEST(Administrador, Reservas){
 
     Ruta    R1(Senderos.begin());
     Rutas.push_back(R1);
-    
+    Reserva Res3("Reserva3", Visitantes.begin(), Rutas.begin());
+    Reserva Res4("Reserva3", Visitantes.begin(), Rutas.begin());
+    Reservas->push_back(Res4);
     Administrador A1("example@uco.es", "f3fb3asx", "Manuel", "Leonado", "Lopez", "82930491J", "20/10/95");
-    Reserva Res1 = A1.addReserva( "Reserva1", Visitantes.begin(), Rutas.begin() ),
-            Res2 = A1.addReserva( "Reserva2", Visitantes.begin(), Rutas.begin() );
-    Reservas->push_back( Res1 );
-    Reservas->push_back( Res2 );
-    
+    EXPECT_TRUE(A1.addReserva( Reservas, "Reserva1", Visitantes.begin(), Rutas.begin() ) ); 
+    EXPECT_TRUE(A1.addReserva( Reservas, "Reserva2", Visitantes.begin(), Rutas.begin() ) );
     EXPECT_FALSE(A1.removeReserva(Reservas, "a65345"));
-    EXPECT_TRUE(A1.removeReserva(Reservas, "Reserva1" );
-    EXPECT_FALSE(A1.removeReserva(Reservas, Res1));
-    EXPECT_TRUE(A1.removeReserva(Reservas, Res2)); 
+    EXPECT_TRUE(A1.removeReserva(Reservas, "Reserva1"));
+    EXPECT_FALSE(A1.removeReserva(Reservas, Res3));
+    EXPECT_TRUE(A1.removeReserva(Reservas, Res4)); 
     
 }
 
@@ -54,4 +56,3 @@ TEST(Administrador, modificarEstadoSendero){
     EXPECT_TRUE(A1.modificarEstadoSendero(itsendero, "no disponible" ));
 
 }
-

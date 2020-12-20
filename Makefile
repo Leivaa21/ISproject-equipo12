@@ -29,7 +29,7 @@ CXXFLAGS += -g -Wall -pthread -std=gnu++11
 
 # All tests produced by this Makefile.  Remember to add new tests you
 # created to the list.
-TESTS = ruta_unittest administrador_unittest sendero_unittest parque_unittest
+TESTS = ruta_unittest  parque_unittest sendero_unittest administrador_unittest
 
 # All Google Test headers.  Usually you shouldn't change this
 # definition.
@@ -96,7 +96,7 @@ sendero_unittest: sendero_unittest.o sendero.o gtest_main.a
 
 parque_unittest.o: parque_unittest.cc parque.cc parque.h 
 
-parque_unittest: parque_unittest.o parque.o gtest_main.a
+parque_unittest: parque_unittest.o parque.o sendero.o incidencia.o ruta.o visitante.o persona.o gtest_main.a
 
 administrador_unittest.o: administrador_unittest.cc administrador.cc administrador.h
 
@@ -104,6 +104,6 @@ administrador_unittest: administrador_unittest.o administrador.o gtest_main.a
 
 ruta_unittest.o : ruta_unittest.cc ruta.cc ruta.h 
 
-ruta_unittest : ruta_unittest.o ruta.o sendero.o visitante.o incidencia.o persona.o gtest_main.a
+ruta_unittest : ruta_unittest.o ruta.o sendero.o parque.o visitante.o incidencia.o persona.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
 

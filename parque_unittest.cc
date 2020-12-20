@@ -5,7 +5,7 @@
 #include "parque.h"
 #include "gtest/gtest.h"
 
-TEST(Parque, AñadeEliminaSendero) {
+TEST(Parque, addremoveSendero) {
 	Parque p;
 	Sendero s1("Nacional");
  	Sendero s2("Himalaya");
@@ -14,10 +14,10 @@ TEST(Parque, AñadeEliminaSendero) {
   	string s5 ="Control";
 
 	EXPECT_EQ(false, p.removeSendero(s3));
-  	EXPECT_EQ(true, p.addSendero(s1));
- 	EXPECT_EQ(true, p.addSendero(s2));
-  	EXPECT_EQ(false, p.addSendero(s2));
-  	EXPECT_EQ(false, p.addSendero(s1));
+  	EXPECT_EQ(true, p.addSendero(&s1));
+ 	EXPECT_EQ(true, p.addSendero(&s2));
+  	EXPECT_EQ(false, p.addSendero(&s2));
+  	EXPECT_EQ(false, p.addSendero(&s1));
   	EXPECT_EQ(false, p.removeSendero(s5));
   	EXPECT_EQ(true, p.removeSendero(s3));
   	EXPECT_EQ(false, p.removeSendero(s3));
@@ -25,23 +25,24 @@ TEST(Parque, AñadeEliminaSendero) {
   	EXPECT_EQ(false, p.removeSendero(s4));
 }
  
-TEST(Parque, AñadeEliminaRuta) {
+TEST(Parque, AddRemoveRuta) {
   	Parque p;
-  	Ruta r1(1);
-  	Ruta r2(2);
-  	int r3 = 1;
-  	int r4 = 2;
-  	int r5 = 35;
+	list<Sendero> Senderos;
+	Sendero S1("Sendero1");
+    Senderos.push_back(S1);
 
-	EXPECT_EQ(false, p.removeRuta(r3));
-	EXPECT_EQ(true, p.addRuta(r1));
- 	EXPECT_EQ(true, p.addRuta(r2));
-  	EXPECT_EQ(false, p.addRuta(r2));
-  	EXPECT_EQ(false, p.addRuta(r1));
-  	EXPECT_EQ(false, p.removeRuta(r5));
-  	EXPECT_EQ(true, p.removeRuta(r3));
-  	EXPECT_EQ(false, p.removeRuta(r3));
-  	EXPECT_EQ(true, p.removeRuta(r4));
-  	EXPECT_EQ(false, p.removeRuta(r4));
+    Ruta r1(Senderos.begin(),1);
+  	Ruta r2(Senderos.begin(),2);
+
+	EXPECT_EQ(false, p.removeRuta(1));
+	EXPECT_EQ(true, p.addRuta(&r1));
+ 	EXPECT_EQ(true, p.addRuta(&r2));
+  	EXPECT_EQ(false, p.addRuta(&r2));
+  	EXPECT_EQ(false, p.addRuta(&r1));
+  	EXPECT_EQ(false, p.removeRuta(35));
+  	EXPECT_EQ(true, p.removeRuta(1));
+  	EXPECT_EQ(false, p.removeRuta(1));
+  	EXPECT_EQ(true, p.removeRuta(2));
+  	EXPECT_EQ(false, p.removeRuta(2));
 }
 

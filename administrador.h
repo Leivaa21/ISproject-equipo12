@@ -68,17 +68,19 @@ class Administrador : public Persona {
 
         /**
          * @function addReserva()
+         * @param <list<Reserva>> *Reservas
          * @param <string> id
          * @param <list<Visitante>::iterator> itvisitante 
          * @param <list<Ruta>::iterator> itruta
          * 
-         * Recibe un id, un iterador de lista visitante y un iterador de la lista de rutas y 
-         * crea una reserva y añade al participante a la ruta correspondiente y la retorna
-         * Si no se pudo crear la reserva dara un mensaje de error por consola 
+         * Recibe un puntero a la lista de reservas, un id, un iterador de lista visitante y un iterador de la lista de rutas y 
+         * crea una reserva y añade al participante a la ruta correspondiente y la añade a la lista Reservas. Si pudo hacerlo
+         * retornara true.
+         * Si no se pudo crear la reserva dara un mensaje de error por consola  y retornara false.
          * 
-         * @return <Reserva> x(id, itvisitante, itruta)
+         * @return <bool> true|false
          */
-        Reserva addReserva(string id, list<Visitante>::iterator itvisitante, list<Ruta>::iterator itruta);
+        bool addReserva(list<Reserva> *Reservas, string id, list<Visitante>::iterator itvisitante, list<Ruta>::iterator itruta);
 
         /**
          * @function removeReserva()

@@ -5,13 +5,15 @@ Administrador::Administrador(string correo, string password, string nombre, stri
     setPassword(password);
 }
 
-Reserva Administrador::addReserva(string id, list<Visitante>::iterator itvisitante, list<Ruta>::iterator itruta){
+bool Administrador::addReserva(list<Reserva> *Reservas, string id, list<Visitante>::iterator itvisitante, list<Ruta>::iterator itruta){
 
     if(itruta->addParticipante(*itvisitante)){
         Reserva x(id, itvisitante, itruta);
-        return x;
+        Reservas->push_back(x);
+        return true;
     }
     cout<<"ERROR: No se pudo crear la reserva\n";
+    return false;
 };
 
 bool Administrador::removeReserva(list<Reserva> *Reservas,Reserva reserva){

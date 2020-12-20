@@ -20,7 +20,7 @@ TEST(Sendero, setDisponibilidad) {
 	EXPECT_EQ(true, s.setDisponibilidad(b));
 }
 
-TEST(Sendero, AñadirEliminarIncidencia) {
+TEST(Sendero, addremoveIncidencia) {
 	Sendero s;
 
 	list<Ruta>::iterator ruta;
